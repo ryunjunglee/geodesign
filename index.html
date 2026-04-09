@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoDesign + Planning Lab | UTSA</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d2240;
+      --orange: #e07b2a;
+      --orange-light: #f0a055;
+      --bg: #f5f6f8;
+      --white: #ffffff;
+      --text: #1e2a3a;
+      --muted: #5a6a7e;
+      --border: #dde3ea;
+      --card-bg: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 64px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+
+    .nav-brand {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-brand span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--orange-light); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3a5c 60%, #0d2240 100%);
+      color: var(--white);
+      padding: 6rem 2.5rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-content { position: relative; max-width: 800px; margin: 0 auto; }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange-light);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span { color: var(--orange); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.78);
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .btn-orange { background: var(--orange); color: #fff; }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2.5rem; }
+    section:nth-child(even) { background: var(--white); }
+
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 3rem;
+      font-size: 1.05rem;
+    }
+
+    /* ── RESEARCH GRID ── */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .research-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--orange);
+      border-radius: 10px;
+      padding: 1.75rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .research-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.1); }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(224,123,42,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .research-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .research-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .stat-box {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-box .num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--orange);
+      display: block;
+    }
+
+    .stat-box .label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.25rem;
+    }
+
+    /* ── AFFILIATIONS ── */
+    .affiliations {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .affil-tag {
+      background: rgba(13,34,64,0.07);
+      color: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    footer strong { color: var(--white); }
+    footer a { color: var(--orange-light); text-decoration: none; }
+
+    .footer-address { margin-top: 0.5rem; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 3.5rem 1.25rem; }
+      .hero { padding: 4rem 1.25rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="#"><span>Geo</span>Design + Planning Lab</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#affiliations">Affiliations</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">University of Texas at San Antonio</div>
+      <h1>GeoDesign + <span>Planning</span> Lab</h1>
+      <p>
+        Promoting sustainable and resilient communities through geospatial
+        research approaches to urban design and planning processes.
+      </p>
+      <a class="btn btn-orange" href="#research">Browse Projects</a>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="section-label">About</div>
+          <h2 class="section-title">GeoDesign + Planning for Sustainable &amp; Resilient Communities</h2>
+          <p>
+            Our lab uses GIS and spatial modeling to measure geographic context,
+            land use patterns, and environmental conditions — identifying patterns
+            and policy recommendations that enhance quality of life in socially
+            vulnerable communities.
+          </p>
+          <p>
+            We bring together urban planners, designers, and data scientists to
+            address the most pressing challenges facing cities today, from rapid
+            urbanization to climate change adaptation.
+          </p>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-box">
+            <span class="num">4</span>
+            <div class="label">Research Areas</div>
+          </div>
+          <div class="stat-box">
+            <span class="num">GIS</span>
+            <div class="label">Core Methodology</div>
+          </div>
+          <div class="stat-box">
+            <span class="num">SA</span>
+            <div class="label">San Antonio Focus</div>
+          </div>
+          <div class="stat-box">
+            <span class="num">UTSA</span>
+            <div class="label">College of Engineering &amp; Integrated Design</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="section-inner">
+      <div class="section-label">Research</div>
+      <h2 class="section-title">Core Research Areas</h2>
+      <p class="section-desc">
+        Our research spans four interconnected domains that shape the health,
+        equity, and resilience of urban communities.
+      </p>
+      <div class="research-grid">
+
+        <div class="research-card">
+          <div class="card-icon">🏙️</div>
+          <h3>Built Environment</h3>
+          <p>
+            Addressing challenges from rapid urbanization affecting human
+            well-being — covering urban forms, structures, vacancies, and
+            walkability. We examine how environmental design can worsen or
+            improve neighborhood conditions and promote equity.
+          </p>
+        </div>
+
+        <div class="research-card">
+          <div class="card-icon">🌿</div>
+          <h3>Green Infrastructure</h3>
+          <p>
+            Examining natural resources serving urban infrastructure purposes,
+            analyzing benefits and connections to neighborhood socioeconomic
+            characteristics. Topics include tree canopy, green spaces, parks,
+            and low-impact development.
+          </p>
+        </div>
+
+        <div class="research-card">
+          <div class="card-icon">🌡️</div>
+          <h3>Climate Adaptation</h3>
+          <p>
+            Analyzing current built and green infrastructure to recommend
+            climate adaptation tools addressing extreme weather events, heat,
+            flooding, and disaster mitigation in urban contexts.
+          </p>
+        </div>
+
+        <div class="research-card">
+          <div class="card-icon">🤝</div>
+          <h3>Social Vulnerability</h3>
+          <p>
+            Investigating the intersection of environmental conditions and
+            social equity, with an environmental justice lens focused on
+            historically underserved and socially vulnerable communities.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AFFILIATIONS -->
+  <section id="affiliations">
+    <div class="section-inner">
+      <div class="section-label">Affiliations</div>
+      <h2 class="section-title">Organizational Affiliations &amp; Partners</h2>
+      <p class="section-desc">
+        Our work is supported by partnerships across academia, government, and community organizations.
+      </p>
+      <div class="affiliations">
+        <span class="affil-tag">School of Architecture and Planning</span>
+        <span class="affil-tag">College of Engineering and Integrated Design</span>
+        <span class="affil-tag">UTSA Westside Community Partnership</span>
+        <span class="affil-tag">Office of Research at UTSA</span>
+        <span class="affil-tag">City of San Antonio</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact">
+    <strong>GeoDesign + Planning Lab</strong>
+    <div class="footer-address">
+      501 W. César E. Chávez Blvd., San Antonio, TX 78207
+    </div>
+    <div style="margin-top:0.75rem;">
+      University of Texas at San Antonio &nbsp;·&nbsp;
+      <a href="https://ceid.utsa.edu/geodesign-lab/">ceid.utsa.edu/geodesign-lab</a>
+    </div>
+  </footer>
+
+</body>
+</html>
