@@ -5,6 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Team | GeoDesign + Planning Lab</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .faculty-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+      border: 3px solid var(--border);
+    }
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .alumni-photo {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 10px 10px 0 0;
+      display: block;
+    }
+    .alumni-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .alumni-info {
+      padding: 1rem 1.25rem;
+    }
+    .alumni-info h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.2rem;
+    }
+    .alumni-info p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+  </style>
 </head>
 <body>
 
@@ -35,7 +79,7 @@
       <h2 class="section-title">Lead Faculty</h2>
 
       <div style="display:flex;gap:2.5rem;align-items:flex-start;flex-wrap:wrap;margin-top:1rem;">
-        <div style="background:linear-gradient(135deg,var(--dark),var(--blue));width:140px;height:140px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.8rem;font-weight:800;color:var(--white);flex-shrink:0;">RL</div>
+        <img class="faculty-photo" src="image/Lee2023_2.jpg" alt="Ryun Jung Lee" />
         <div style="flex:1;min-width:260px;">
           <h3 style="font-size:1.35rem;font-weight:800;color:var(--dark);margin-bottom:0.2rem;">Ryun Jung (RJ) Lee, Ph.D., AICP</h3>
           <div style="color:var(--orange);font-weight:600;font-size:0.9rem;margin-bottom:1rem;">Assistant Professor of Urban and Regional Planning · UTSA</div>
@@ -67,7 +111,9 @@
       <div class="grid-3">
 
         <div class="team-card">
-          <div class="team-avatar">EC</div>
+          <div class="team-avatar" style="height:200px;overflow:hidden;">
+            <img src="image/ElliottColeman.jpg" alt="Elliott Coleman" />
+          </div>
           <div class="team-info">
             <h3>Elliott Coleman</h3>
             <div class="team-role">Graduate Research Assistant</div>
@@ -86,7 +132,9 @@
         </div>
 
         <div class="team-card">
-          <div class="team-avatar">FT</div>
+          <div class="team-avatar" style="height:200px;overflow:hidden;">
+            <img src="image/FaroTandoc_MSURP.jpg" alt="Faro Tandoc" />
+          </div>
           <div class="team-info">
             <h3>Faro Tandoc</h3>
             <div class="team-role">Graduate Research Assistant</div>
@@ -115,22 +163,31 @@
 
       <div class="grid-3">
 
-        <div class="card">
-          <h3>Samuel Rueda</h3>
-          <div class="team-role">Graduate Research Assistant</div>
-          <p>M.S. Urban and Regional Planning, Class of 2024</p>
+        <div class="alumni-card">
+          <img class="alumni-photo" src="image/SamRueda2.jpg" alt="Samuel Rueda" />
+          <div class="alumni-info">
+            <h3>Samuel Rueda</h3>
+            <div class="team-role">Graduate Research Assistant</div>
+            <p>M.S. Urban and Regional Planning, Class of 2024</p>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Kenyala Felder</h3>
-          <div class="team-role">Graduate Research Assistant</div>
-          <p>M.S. Urban and Regional Planning, Class of 2024</p>
+        <div class="alumni-card">
+          <img class="alumni-photo" src="image/KenyaFelder.jpg" alt="Kenyala Felder" />
+          <div class="alumni-info">
+            <h3>Kenyala Felder</h3>
+            <div class="team-role">Graduate Research Assistant</div>
+            <p>M.S. Urban and Regional Planning, Class of 2024</p>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Nico Molina</h3>
-          <div class="team-role">Graduate Research Assistant</div>
-          <p>M.S. Urban and Regional Planning, Class of 2025</p>
+        <div class="alumni-card">
+          <img class="alumni-photo" src="image/NicoMolina.jpeg" alt="Nico Molina" />
+          <div class="alumni-info">
+            <h3>Nico Molina</h3>
+            <div class="team-role">Graduate Research Assistant</div>
+            <p>M.S. Urban and Regional Planning, Class of 2025</p>
+          </div>
         </div>
 
       </div>
