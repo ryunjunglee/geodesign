@@ -38,7 +38,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 3rem;
-  height: 68px;
+  height: 76px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.3);
 }
 
@@ -47,6 +47,12 @@ nav {
   flex-direction: column;
   text-decoration: none;
   line-height: 1.2;
+}
+
+.nav-brand .brand-logo {
+  height: 40px;
+  width: auto;
+  display: block;
 }
 
 .nav-brand .brand-main {
@@ -509,6 +515,7 @@ footer {
     gap: 0.45rem;
   }
   .nav-brand { align-items: center; text-align: center; }
+  .nav-brand .brand-logo { height: 26px; }
   .nav-brand .brand-sub { display: none; }
   .nav-links { flex-wrap: wrap; justify-content: center; gap: 0.1rem; }
   .nav-links a { padding: 0.35rem 0.6rem; font-size: 0.8rem; }
