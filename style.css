@@ -88,9 +88,13 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  background: #edf2f7;
+  background-color: var(--blue-light);
+  background-image:
+    radial-gradient(ellipse 70% 60% at 50% -10%, rgba(241,90,34,0.10), transparent 70%),
+    repeating-linear-gradient(0deg,  rgba(45,55,72,0.055) 0 1px, transparent 1px 52px),
+    repeating-linear-gradient(90deg, rgba(45,55,72,0.055) 0 1px, transparent 1px 52px);
   color: var(--text);
-  padding: 5.5rem 3rem 5rem;
+  padding: 5rem 3rem 4.5rem;
   text-align: center;
   border-bottom: 1px solid var(--border);
 }
