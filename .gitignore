@@ -1,0 +1,16 @@
+# Windows / OneDrive cruft
+desktop.ini
+Thumbs.db
+ehthumbs.db
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+
+# Office lock files
+~$*
+
+# Editor / temp
+*.tmp
+*.swp
+*~
