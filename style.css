@@ -524,3 +524,95 @@ footer {
   .footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
   footer { padding: 2rem 1.25rem; }
 }
+
+/* ---------- RESEARCH AGENDA (question -> approach ladder) ---------- */
+.agenda-section { border-bottom: 1px solid var(--border); }
+.agenda-colhead {
+  display: grid;
+  grid-template-columns: 1fr 44px 1fr;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+.agenda-colhead span {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--muted);
+}
+.agenda-ladder {
+  border-top: 1px solid var(--border);
+  margin-top: 0.75rem;
+}
+.agenda-rung {
+  display: grid;
+  grid-template-columns: 1fr 44px 1fr;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.agenda-rung .agenda-q {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.45;
+}
+.agenda-rung .agenda-arrow {
+  display: flex;
+  justify-content: center;
+  color: var(--orange);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.agenda-rung .agenda-a {
+  background: var(--blue-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.mission-band {
+  background: var(--dark);
+  color: var(--white);
+  padding: 2.25rem 2.5rem;
+  border-radius: 4px;
+  margin-top: 2.75rem;
+}
+.mission-band .mission-lead {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange-light);
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+.mission-band p {
+  font-size: 1.45rem;
+  line-height: 1.45;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+}
+.mission-band em {
+  font-style: normal;
+  color: var(--orange-light);
+}
+
+@media (max-width: 860px) {
+  .agenda-colhead { display: none; }
+  .agenda-rung {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .agenda-rung .agenda-arrow {
+    justify-content: flex-start;
+    transform: rotate(90deg);
+    width: 1.5rem;
+  }
+  .mission-band { padding: 1.75rem 1.5rem; }
+  .mission-band p { font-size: 1.15rem; }
+}
