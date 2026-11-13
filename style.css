@@ -94,6 +94,8 @@ nav {
 
 /* ── HERO ── */
 .hero {
+  position: relative;
+  overflow: hidden;
   background-color: var(--blue-light);
   background-image:
     radial-gradient(ellipse 70% 60% at 50% -10%, rgba(241,90,34,0.10), transparent 70%),
@@ -105,7 +107,7 @@ nav {
   border-bottom: 1px solid var(--border);
 }
 
-.hero-inner { max-width: 820px; margin: 0 auto; }
+.hero-inner { max-width: 820px; margin: 0 auto; position: relative; z-index: 1; }
 
 .eyebrow {
   display: inline-block;
@@ -615,4 +617,20 @@ footer {
   }
   .mission-band { padding: 1.75rem 1.5rem; }
   .mission-band p { font-size: 1.15rem; }
+}
+
+/* Census-tract wash behind the hero. Generated from the heat-accessibility
+   ACS data (DFW tracts, public ACS 5-year); flattened onto --blue-light so
+   uncovered corners are invisible. Decorative only — kept faint so it reads
+   as texture rather than as a readable map. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("image/hero-map.png");
+  background-size: cover;
+  background-position: center 45%;
+  background-repeat: no-repeat;
+  opacity: 0.10;
+  pointer-events: none;
 }
